@@ -13,8 +13,8 @@ Everything below is for the maintainer's own tooling.
 
 dosatsu helps developers who use coding agents to generate pull requests
 understand those pull requests better. It is a plugin for Claude Code and
-Codex. The methods are not decided yet, and the plugin currently ships no
-skills.
+Codex. It ships one skill, `understanding-changes`, which has the developer
+explain a change and checks that explanation against the code.
 
 ## Layout
 
@@ -22,10 +22,8 @@ skills.
 - `.claude-plugin/marketplace.json` — lets Claude Code add this repo as a marketplace
 - `.codex-plugin/plugin.json` — Codex plugin manifest
 - `.agents/plugins/marketplace.json` — lets Codex add this repo as a marketplace
+- `skills/understanding-changes/SKILL.md` — the skill
 - `tests/manifests.sh` — checks the four manifests
-
-`skills/` and the Codex manifest's `skills` field arrive together with the
-first skill.
 
 ## Commands
 
