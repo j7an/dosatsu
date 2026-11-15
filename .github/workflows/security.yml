@@ -1,0 +1,30 @@
+name: Security Scanning
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "0 6 * * 1"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions: {}
+
+jobs:
+  security:
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    uses: j7an/shared-workflows/.github/workflows/security-scan.yml@4f97f4716f0d420853222db356d9340ac40f40ba # v4.12.3
+    with:
+      # No CodeQL-analysable source in this repo.
+      run_codeql: false
+      # No package manifest or lockfile: OSV fails when it finds nothing to
+      # scan. Re-enable both when the repo gains a lockfile.
+      run_osv_full: false
+      run_osv_pr: false
