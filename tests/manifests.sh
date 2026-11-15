@@ -5,7 +5,8 @@
 # manifests carry the same semver version. It also checks the skills: each
 # directory under skills/ has a SKILL.md whose frontmatter name matches the
 # directory and whose description is not empty, and the Codex manifest points
-# at skills/. Reports every failure, not just the first. Run from anywhere: sh tests/manifests.sh
+# at skills/. It also checks that .version-bump.json lists the two plugin
+# manifests. Reports every failure, not just the first. Run from anywhere: sh tests/manifests.sh
 set -eu
 
 command -v jq >/dev/null 2>&1 || { echo "error: jq is required" >&2; exit 2; }
@@ -91,6 +92,18 @@ check_skills() {
     || fail "$codex_plugin: skills is not \"./skills/\""
 }
 
+# The release bot bumps the files listed in .version-bump.json and pushes to
+# main past CI, so a list that omits a manifest would only show up after a
+# release. Require exactly the two plugin manifests, each with field "version".
+check_version_bump() {
+  is_object .version-bump.json || return 0
+  jq -e --arg a "$claude_plugin" --arg b "$codex_plugin" \
+    '(.files | type == "array" and length == 2)
+     and ([.files[].path] | sort) == ([$a, $b] | sort)
+     and all(.files[]; .field == "version")' .version-bump.json >/dev/null 2>&1 \
+    || fail '.version-bump.json: must list exactly the two plugin manifests, each with field "version"'
+}
+
 # Command substitution runs in a subshell, so failures inside it are
 # re-detected from its stderr rather than from $failed.
 errs=$(mktemp)
@@ -104,6 +117,7 @@ fi
 check_market "$claude_market"
 check_market "$codex_market"
 check_skills
+check_version_bump
 
 if [ -n "$claude_v" ] && [ -n "$codex_v" ] && [ "$claude_v" != "$codex_v" ]; then
   fail "versions differ: claude=$claude_v codex=$codex_v"
