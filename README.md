@@ -31,14 +31,17 @@ words, one part at a time, and checks what you say against the code. It
 corrects what you got wrong, teaches what is new to you, and ends with the
 gaps that are left.
 
-Ask for it in plain words:
+On Claude Code, ask for it in plain words:
 
 - "Help me understand this branch."
 - "Help me understand commit `<sha>`."
 - "Help me understand release `<tag>`."
 
-On Claude Code you can also run `/dosatsu:understanding-changes`, followed
-by a commit or `release <tag>`, or by nothing for the current branch.
+or run `/dosatsu:understanding-changes`, followed by a commit or
+`release <tag>`, or by nothing for the current branch.
+
+On Codex the plugin lists the skill as `dosatsu:understanding-changes`.
+Starting it there has not been tested in a session yet.
 
 Run it inside a checkout of the repository. It covers committed changes
 only.
