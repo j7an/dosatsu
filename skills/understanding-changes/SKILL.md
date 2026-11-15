@@ -118,13 +118,14 @@ evidence that one order teaches better than another.
 ## Step 5: Explain-back, one part at a time
 
 1. Show the part: the edits, or `file:line` pointers when they are long.
-2. Ask one open question and wait. One question is one sentence with one
-   question mark that asks for one thing. "What does X do, and why?" and
-   "What does it print, and what does it return?" are two questions each;
-   ask one now and keep the other for later. The developer explains what it
-   does, or why, or predicts what happens for a given input, or says what
-   would break without it. No multiple choice: producing the explanation is
-   the point.
+2. Ask one open question and wait. The developer explains what it does and
+   why, or predicts what happens for a given input, or says what would break
+   without it. No multiple choice: producing the explanation is the point.
+   One question asks for one thing: one explanation of the part (what it
+   does and why) or one prediction about a single run's outcome. Do not
+   bundle separate asks into one turn, such as what each of two commands
+   does, which file one of them reads, and where a value comes from. Ask
+   one now and keep the rest for later.
 3. Read the code, and its callers where it matters, before judging the
    answer.
 4. Respond. Say specifically what was right. Correct what was wrong, citing
