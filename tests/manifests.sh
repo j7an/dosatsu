@@ -6,7 +6,8 @@
 # directory under skills/ has a SKILL.md whose frontmatter name matches the
 # directory and whose description is not empty, and the Codex manifest points
 # at skills/. It also checks that .version-bump.json lists the two plugin
-# manifests. Reports every failure, not just the first. Run from anywhere: sh tests/manifests.sh
+# manifests. Reports every failure, not just the first. Run from anywhere:
+# sh tests/manifests.sh
 set -eu
 
 command -v jq >/dev/null 2>&1 || { echo "error: jq is required" >&2; exit 2; }
