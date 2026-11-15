@@ -31,7 +31,7 @@ words, one part at a time, and checks what you say against the code. It
 corrects what you got wrong, teaches what is new to you, and ends with the
 gaps that are left.
 
-Ask for it in plain words, on Claude Code or Codex:
+Ask for it in plain words:
 
 - "Help me understand this branch."
 - "Help me understand commit `<sha>`."
