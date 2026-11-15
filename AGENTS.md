@@ -13,8 +13,8 @@ Everything below is for the maintainer's own tooling.
 
 dosatsu helps developers who use coding agents to generate pull requests
 understand those pull requests better. It is a plugin for Claude Code and
-Codex. The methods are not decided yet, and the plugin currently ships no
-skills.
+Codex. It ships one skill, `understanding-changes`, which has the developer
+explain a change and checks that explanation against the code.
 
 ## Layout
 
@@ -22,15 +22,23 @@ skills.
 - `.claude-plugin/marketplace.json` — lets Claude Code add this repo as a marketplace
 - `.codex-plugin/plugin.json` — Codex plugin manifest
 - `.agents/plugins/marketplace.json` — lets Codex add this repo as a marketplace
-- `tests/manifests.sh` — checks the four manifests
-
-`skills/` and the Codex manifest's `skills` field arrive together with the
-first skill.
+- `skills/understanding-changes/SKILL.md` — the skill
+- `.version-bump.json` — the files a release bumps
+- `tests/manifests.sh` — checks the manifests and the skills
 
 ## Commands
 
 - `sh tests/manifests.sh` — required before every commit; needs `jq`
 - `claude plugin validate --strict .` — optional, local only
+
+## Releasing
+
+- Run the "Tag Release" workflow from `main` and pick a bump (`auto` reads
+  the Conventional Commits since the last tag).
+- Approve the proposed tag in the `release` environment. The workflow bumps
+  both manifests and pushes the tag; `release.yml` then creates the GitHub
+  Release page.
+- Never push a `v*` tag or edit a manifest version by hand.
 
 ## Rules
 

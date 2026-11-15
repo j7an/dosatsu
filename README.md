@@ -6,7 +6,7 @@ Codex.
 
 ## Status
 
-Early. The plugin installs on Claude Code and Codex but ships no skills yet.
+Early. The plugin ships one skill, `understanding-changes`.
 
 ## Install
 
@@ -24,7 +24,31 @@ codex plugin marketplace add j7an/dosatsu
 codex plugin add dosatsu@dosatsu
 ```
 
+## Use
+
+The `understanding-changes` skill has you explain a change in your own
+words, one part at a time, and checks what you say against the code. It
+corrects what you got wrong, teaches what is new to you, and ends with the
+gaps that are left.
+
+On Claude Code, ask for it in plain words:
+
+- "Help me understand this branch."
+- "Help me understand commit `<sha>`."
+- "Help me understand release `<tag>`."
+
+or run `/dosatsu:understanding-changes`, followed by a commit or
+`release <tag>`, or by nothing for the current branch.
+
+On Codex the plugin lists the skill as `dosatsu:understanding-changes`.
+Starting it there has not been tested in a session yet.
+
+Run it inside a checkout of the repository. It covers committed changes
+only.
+
 ## Update
+
+If you installed before `v0.1.0`, uninstall and install again.
 
 Claude Code:
 
