@@ -1,6 +1,7 @@
 #!/bin/sh
 # Check the plugin manifests for Claude Code and Codex: each exists and is a
-# JSON object, every one names the plugin "dosatsu", and the two plugin
+# JSON object, every one names the plugin "dosatsu" (and both marketplaces
+# are themselves named "dosatsu"), and the two plugin
 # manifests carry the same semver version. Reports every failure, not just
 # the first. Run from anywhere: sh tests/manifests.sh
 set -eu
@@ -46,6 +47,9 @@ check_plugin() {
 
 check_market() {
   is_object "$1" || return 0
+  # The marketplace name is the second half of the documented selector
+  # dosatsu@dosatsu.
+  jq -e '.name == "dosatsu"' "$1" >/dev/null || fail "$1: marketplace name is not \"dosatsu\""
   jq -e '.plugins | map(.name) == ["dosatsu"]' "$1" >/dev/null 2>&1 \
     || fail "$1: must list exactly the plugin \"dosatsu\""
 }
