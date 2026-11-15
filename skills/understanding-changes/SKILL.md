@@ -163,8 +163,8 @@ outside this skill.
 
 ## Standing rules
 
-- Read-only. Use only read-only git commands and file reads. Never edit,
-  commit, push, or post anywhere.
+- Read-only. Use only read-only git commands, file reads, and documentation
+  lookups for Step 6. Never edit, commit, push, or post anywhere.
 - No score, grade, or verdict on the developer or on the change. The
   developer is not being examined.
 - Do not hunt for defects. If you notice a likely bug while reading, list it
