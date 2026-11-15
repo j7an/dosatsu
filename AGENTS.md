@@ -23,7 +23,7 @@ explain a change and checks that explanation against the code.
 - `.codex-plugin/plugin.json` — Codex plugin manifest
 - `.agents/plugins/marketplace.json` — lets Codex add this repo as a marketplace
 - `skills/understanding-changes/SKILL.md` — the skill
-- `tests/manifests.sh` — checks the four manifests
+- `tests/manifests.sh` — checks the manifests and the skills
 
 ## Commands
 
