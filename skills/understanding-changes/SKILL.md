@@ -30,8 +30,8 @@ It is not for:
 | A commit | That commit's own change. For a merge commit, against its first parent |
 | A release | From the previous release tag to the given tag. For a release not yet tagged, from the latest tag to `HEAD` |
 
-- Say the resolved range back in one line before going on, so the developer
-  can correct it.
+- Make the resolved range, in one line, the first thing you say, with no
+  announcement before it, so the developer can correct it.
 - If the range is empty, or the branch is the default branch and nothing was
   given, ask what to study.
 - Only committed changes are covered. If the working tree has uncommitted
@@ -53,7 +53,8 @@ invent a reason.
 List every sub-change, one line each. A sub-change is a group of edits that
 serves one purpose; it may span files. Mark each line either for explain-back,
 with the reason, or as listed only (Step 4 decides which). End by saying where
-you would start and asking the developer to choose, then wait for the answer.
+you would start and asking one question that lets the developer skip or add
+parts, then wait for the answer.
 
 For a branch, the developer sees something like:
 
@@ -117,9 +118,13 @@ evidence that one order teaches better than another.
 ## Step 5: Explain-back, one part at a time
 
 1. Show the part: the edits, or `file:line` pointers when they are long.
-2. Ask one open question and wait. The developer explains what it does and
-   why, or predicts what happens for a given input, or says what would break
-   without it. No multiple choice: producing the explanation is the point.
+2. Ask one open question and wait. One question is one sentence with one
+   question mark that asks for one thing. "What does X do, and why?" and
+   "What does it print, and what does it return?" are two questions each;
+   ask one now and keep the other for later. The developer explains what it
+   does, or why, or predicts what happens for a given input, or says what
+   would break without it. No multiple choice: producing the explanation is
+   the point.
 3. Read the code, and its callers where it matters, before judging the
    answer.
 4. Respond. Say specifically what was right. Correct what was wrong, citing
@@ -164,7 +169,9 @@ outside this skill.
 ## Standing rules
 
 - Read-only. Use only read-only git commands, file reads, and documentation
-  lookups for Step 6. Never edit, commit, push, or post anywhere.
+  lookups for Step 6. Never fetch or pull: study the local history as it
+  is. Run no other command, not even `echo`, `ls` or a tool's `--help`, and
+  do not pipe git into one. Never edit, commit, push, or post anywhere.
 - No score, grade, or verdict on the developer or on the change. The
   developer is not being examined.
 - Do not hunt for defects. If you notice a likely bug while reading, list it
