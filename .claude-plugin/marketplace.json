@@ -1,0 +1,12 @@
+{
+  "name": "dosatsu",
+  "description": "Marketplace for the dosatsu plugin.",
+  "owner": { "name": "j7an" },
+  "plugins": [
+    {
+      "name": "dosatsu",
+      "description": "Helps developers who use coding agents to generate pull requests understand those pull requests better.",
+      "source": "./"
+    }
+  ]
+}

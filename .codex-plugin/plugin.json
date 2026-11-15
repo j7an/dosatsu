@@ -1,0 +1,9 @@
+{
+  "name": "dosatsu",
+  "version": "0.1.0",
+  "description": "Helps developers who use coding agents to generate pull requests understand those pull requests better.",
+  "author": { "name": "j7an", "url": "https://github.com/j7an" },
+  "homepage": "https://github.com/j7an/dosatsu",
+  "repository": "https://github.com/j7an/dosatsu",
+  "license": "MIT"
+}
